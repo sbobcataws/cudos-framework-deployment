@@ -9,6 +9,21 @@ dashboards:
       templateId: data-transfer-aga-cost-analysis-template-enhanced-v6
       sourceAccountId: '869004330191'
       region: us-east-1
+      nonTaxonomyColumns:
+      - product_code
+      - product_servicecode
+      - product_servicename
+      - charge_type
+      - usage_type
+      - operation
+      - region
+      - from_location
+      - to_location
+      - from_location_type
+      - resource_id
+      - data_transfer_type
+      - linked_account_id
+      - tags_json
 datasets:
   data_transfer_view:
     data:
@@ -48,6 +63,8 @@ datasets:
             - Name: payer_account_id
               Type: STRING
             - Name: linked_account_id
+              Type: STRING
+            - Name: tags_json
               Type: STRING
             - Name: product_name
               Type: STRING
@@ -112,6 +129,7 @@ datasets:
               - billing_period
               - payer_account_id
               - linked_account_id
+              - tags_json
               - product_name
               - charge_type
               - operation
@@ -148,6 +166,7 @@ datasets:
 views:
   data_transfer_view:
     dependsOn:
+      tags: json
       cur2:
         - product['servicename']
         - product['product_name']
@@ -174,6 +193,7 @@ views:
       , bill_billing_period_start_date billing_period
       , bill_payer_account_id payer_account_id
       , line_item_usage_account_id linked_account_id
+      , ${cur_tags_json} tags_json
       , product['product_name'] product_name
       , line_item_line_item_type charge_type
       , line_item_operation operation
@@ -199,4 +219,4 @@ views:
          AND (line_item_usage_type LIKE '%In%' OR line_item_usage_type LIKE '%Out%' OR line_item_usage_type LIKE '%Regional%')
          AND (line_item_line_item_type = 'Usage' OR line_item_line_item_type LIKE '%Discount')
          AND cast(concat(billing_period, '-01') as timestamp) >= "date_trunc"('month', current_timestamp) - INTERVAL '2' MONTH
-      GROUP BY 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21
+      GROUP BY 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22
