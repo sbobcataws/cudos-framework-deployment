@@ -2,7 +2,7 @@
 # QuickSight Dashboards definitions
 dashboards:
   CUDOS:
-    category: 'Deprecated'
+    category: "Deprecated"
     name: CUDOS Dashboard
     templateId: cudos_dashboard_v3
     dashboardId: cudos
@@ -18,7 +18,7 @@ dashboards:
       minTemplateVersion: 189
       minTemplateDescription: "v4.75.0"
   CUDOSv5:
-    category: 'Foundational'
+    category: "Foundational"
     name: CUDOS Dashboard v5
     templateId: cudos_v5
     dashboardId: cudos-v5
@@ -30,13 +30,25 @@ dashboards:
     versions:
       minTemplateVersion: 1
       minTemplateDescription: "v5.0.0"
-    nonTaxonomyColumns: [
-        'product_code', 'service', 'operation', 'charge_type', 'usage_type', 'reservation_a_r_n',
-        'item_description', 'pricing_unit', 'region', 'pricing_term', 'linked_account_id', 'savings_plan_a_r_n', 'tags_json'
-    ]
+    nonTaxonomyColumns:
+      [
+        "product_code",
+        "service",
+        "operation",
+        "charge_type",
+        "usage_type",
+        "reservation_a_r_n",
+        "item_description",
+        "pricing_unit",
+        "region",
+        "pricing_term",
+        "linked_account_id",
+        "savings_plan_a_r_n",
+        "tags_json",
+      ]
 
   CID:
-    category: 'Foundational'
+    category: "Foundational"
     name: Cost Intelligence Dashboard
     templateId: Cost_Intelligence_Dashboard
     dashboardId: cost_intelligence_dashboard
@@ -49,13 +61,25 @@ dashboards:
     versions:
       minTemplateVersion: 3
       minTemplateDescription: "v3.1.0"
-    nonTaxonomyColumns: [
-        'product_code', 'service', 'operation', 'charge_type', 'usage_type', 'reservation_a_r_n',
-        'item_description', 'pricing_unit', 'region', 'pricing_term', 'linked_account_id', 'savings_plan_a_r_n', 'tags_json'
-    ]
+    nonTaxonomyColumns:
+      [
+        "product_code",
+        "service",
+        "operation",
+        "charge_type",
+        "usage_type",
+        "reservation_a_r_n",
+        "item_description",
+        "pricing_unit",
+        "region",
+        "pricing_term",
+        "linked_account_id",
+        "savings_plan_a_r_n",
+        "tags_json",
+      ]
 
   KPI:
-    category: 'Foundational'
+    category: "Foundational"
     name: KPI Dashboard
     templateId: kpi_dashboard
     dashboardId: kpi_dashboard
@@ -70,13 +94,25 @@ dashboards:
     versions:
       minTemplateVersion: 9
       minTemplateDescription: "v1.2.1"
-    nonTaxonomyColumns: [
-        'product_code', 'service', 'operation', 'charge_type', 'usage_type', 'reservation_a_r_n',
-        'item_description', 'pricing_unit', 'region', 'pricing_term', 'linked_account_id', 'savings_plan_a_r_n', 'tags_json'
-    ]
+    nonTaxonomyColumns:
+      [
+        "product_code",
+        "service",
+        "operation",
+        "charge_type",
+        "usage_type",
+        "reservation_a_r_n",
+        "item_description",
+        "pricing_unit",
+        "region",
+        "pricing_term",
+        "linked_account_id",
+        "savings_plan_a_r_n",
+        "tags_json",
+      ]
 
   Trends:
-    category: 'Additional'
+    category: "Additional"
     name: Trends Dashboard
     templateId: cudos-trends-dashboard-template
     dashboardId: trends-dashboard
@@ -90,7 +126,7 @@ dashboards:
       minTemplateDescription: "v5.0.0"
 
   Compute Optimizer:
-    category: 'Advanced'
+    category: "Advanced"
     name: Compute Optimizer Dashboard
     templateId: compute_optimizer
     dashboardId: compute-optimizer-dashboard
@@ -101,9 +137,9 @@ dashboards:
       minTemplateVersion: 3
       minTemplateDescription: "v1.1.1"
       versionMap:
-        1: 'v1.0.0'
-        2: 'v1.0.1'
-        3: 'v1.1.0'
+        1: "v1.0.0"
+        2: "v1.0.1"
+        3: "v1.1.0"
 
 # QuickSight DataSets definitions
 datasets:
@@ -233,7 +269,6 @@ datasets:
     schedules:
       - default
 
-
   # Trusted Advisor (TAO)
   ta-organizational-view:
     File: datasets/tao/dataset.json
@@ -287,11 +322,23 @@ datasets:
       - default
     parameters:
       primary_tag_name:
-        default: 'application'
+        default: "application"
         description: "primary tag (ex: application). if your are not using tags, leave default. Special characters are not allowed."
       secondary_tag_name:
-        default: 'owner'
+        default: "owner"
         description: "secondary tag (ex: owner). if your are not using tags, leave default. Special characters are not allowed."
+
+  # Data Transfer dataset
+  data_transfer_view:
+    File: datasets/data-transfer/data_transfer_view.json
+    dependsOn:
+      dataProviders:
+        - DataExports
+      views:
+        - account_map
+        - data_transfer_view
+    schedules:
+      - default
 
 # Athena views definitions
 views:
@@ -764,7 +811,7 @@ views:
     File: queries/tao/glue_table.json
     parameters:
       s3FolderPath:
-        default: 's3://cid-data-{account_id}/trusted-advisor/trusted-advisor-data'
+        default: "s3://cid-data-{account_id}/trusted-advisor/trusted-advisor-data"
         description: Trusted Advisor Organization View report S3 path
   ta_org_view:
     File: queries/tao/ta_org_view.sql
@@ -778,7 +825,7 @@ views:
     File: queries/co/ec2_instance.json
     parameters:
       s3FolderPath:
-        default: 's3://cid-data-{account_id}/compute_optimizer/compute_optimizer_ec2_instance'
+        default: "s3://cid-data-{account_id}/compute_optimizer/compute_optimizer_ec2_instance"
         description: Compute Optimizer EC2 report S3 path
 
   compute_optimizer_rds_instance_lines:
@@ -786,7 +833,7 @@ views:
     File: queries/co/rds_database.json
     parameters:
       s3FolderPath:
-        default: 's3://cid-data-{account_id}/compute_optimizer/compute_optimizer_rds_database'
+        default: "s3://cid-data-{account_id}/compute_optimizer/compute_optimizer_rds_database"
         description: Compute Optimizer RDS report S3 path
 
   compute_optimizer_ecs_service_lines:
@@ -794,7 +841,7 @@ views:
     File: queries/co/ecs_service.json
     parameters:
       s3FolderPath:
-        default: 's3://cid-data-{account_id}/compute_optimizer/compute_optimizer_ecs_service'
+        default: "s3://cid-data-{account_id}/compute_optimizer/compute_optimizer_ecs_service"
         description: Compute Optimizer ECS report S3 path
 
   compute_optimizer_auto_scale_lines:
@@ -802,7 +849,7 @@ views:
     File: queries/co/auto_scale.json
     parameters:
       s3FolderPath:
-        default: 's3://cid-data-{account_id}/compute_optimizer/compute_optimizer_auto_scale'
+        default: "s3://cid-data-{account_id}/compute_optimizer/compute_optimizer_auto_scale"
         description: Compute Optimizer auto_scale report S3 path
 
   compute_optimizer_ebs_volume_lines:
@@ -810,7 +857,7 @@ views:
     File: queries/co/ebs_volume.json
     parameters:
       s3FolderPath:
-        default: 's3://cid-data-{account_id}/compute_optimizer/compute_optimizer_ebs_volume'
+        default: "s3://cid-data-{account_id}/compute_optimizer/compute_optimizer_ebs_volume"
         description: Compute Optimizer EBS report S3 path
 
   compute_optimizer_lambda_lines:
@@ -818,7 +865,7 @@ views:
     File: queries/co/lambda.json
     parameters:
       s3FolderPath:
-        default: 's3://cid-data-{account_id}/compute_optimizer/compute_optimizer_lambda'
+        default: "s3://cid-data-{account_id}/compute_optimizer/compute_optimizer_lambda"
         description: Compute Optimizer Lambda report S3 path
 
   compute_optimizer_license_lines:
@@ -826,7 +873,7 @@ views:
     File: queries/co/license.json
     parameters:
       s3FolderPath:
-        default: 's3://cid-data-{account_id}/compute_optimizer/compute_optimizer_license'
+        default: "s3://cid-data-{account_id}/compute_optimizer/compute_optimizer_license"
         description: Compute Optimizer license report S3 path
 
   compute_optimizer_idle_lines:
@@ -834,7 +881,7 @@ views:
     File: queries/co/idle.json
     parameters:
       s3FolderPath:
-        default: 's3://cid-data-{account_id}/compute_optimizer/compute_optimizer_idle'
+        default: "s3://cid-data-{account_id}/compute_optimizer/compute_optimizer_idle"
         description: Compute Optimizer idle report S3 path
 
   compute_optimizer_ec2_instance_options:
@@ -936,8 +983,8 @@ views:
         default: '[{"Name":"source_account_id","Type":"string"},{"Name":"cur_name_1","Type":"string"},{"Name":"cur_name_2","Type":"string"},{"Name":"year","Type":"string"},{"Name":"month","Type":"string"}]'
       location:
         type: cur.location
-        description: 's3 path'
-        default: 's3://cid-{account_id}-shared/cur/'
+        description: "s3 path"
+        default: "s3://cid-{account_id}-shared/cur/"
 
 # Refresh Schedules for QuickSight DataSets
 schedules:
@@ -945,29 +992,29 @@ schedules:
     ScheduleId: cid
     ScheduleFrequency:
       Interval: DAILY
-      TimeOfTheDay: '02:00-05:00'
+      TimeOfTheDay: "02:00-05:00"
     RefreshType: FULL_REFRESH
 
 crawlers:
   cur:
     data:
-      Name:  'CidCmdCurCrawler'
+      Name: "CidCmdCurCrawler"
       Description: A recurring crawler that keeps your CUR table in Athena up-to-date.
-      Role:  ${crawler_role_arn}
+      Role: ${crawler_role_arn}
       DatabaseName: "${athena_database_name}"
       Targets:
         S3Targets:
           - Path: ${location}
             Exclusions:
-              - '**.json'
-              - '**.yml'
-              - '**.sql'
-              - '**.csv'
-              - '**.csv.metadata'
-              - '**.gz'
-              - '**.zip'
-              - '**/cost_and_usage_data_status/*'
-              - 'aws-programmatic-access-test-object'
+              - "**.json"
+              - "**.yml"
+              - "**.sql"
+              - "**.csv"
+              - "**.csv.metadata"
+              - "**.gz"
+              - "**.zip"
+              - "**/cost_and_usage_data_status/*"
+              - "aws-programmatic-access-test-object"
       SchemaChangePolicy:
         DeleteBehavior: LOG
       RecrawlPolicy:
@@ -987,5 +1034,5 @@ crawlers:
         }
     parameters:
       s3path:
-        default: 's3://cid-{account_id}-cur/cur/'
+        default: "s3://cid-{account_id}-cur/cur/"
         description: CUR path

@@ -1,0 +1,210 @@
+{
+  "DataSetId": "a75d09be-4c81-46df-8ae1-f83eb2ed10cc",
+  "Name": "data_transfer_view",
+  "PhysicalTableMap": {
+    "62e77300-66ee-4669-b257-4823ffd5678a": {
+      "RelationalTable": {
+        "DataSourceArn": "${athena_datasource_arn}",
+        "Catalog": "AwsDataCatalog",
+        "Schema": "${athena_database_name}",
+        "Name": "account_map",
+        "InputColumns": [
+          {
+            "Name": "account_id",
+            "Type": "STRING"
+          },
+          {
+            "Name": "account_name",
+            "Type": "STRING"
+          }
+        ]
+      }
+    },
+    "f578e7c1-d15d-4068-bb25-988a092a7333": {
+      "RelationalTable": {
+        "DataSourceArn": "${athena_datasource_arn}",
+        "Catalog": "AwsDataCatalog",
+        "Schema": "${athena_database_name}",
+        "Name": "data_transfer_view",
+        "InputColumns": [
+          {
+            "Name": "product_family",
+            "Type": "STRING"
+          },
+          {
+            "Name": "product_servicecode",
+            "Type": "STRING"
+          },
+          {
+            "Name": "product_servicename",
+            "Type": "STRING"
+          },
+          {
+            "Name": "product_code",
+            "Type": "STRING"
+          },
+          {
+            "Name": "usage_date",
+            "Type": "DATETIME"
+          },
+          {
+            "Name": "billing_period",
+            "Type": "DATETIME"
+          },
+          {
+            "Name": "payer_account_id",
+            "Type": "STRING"
+          },
+          {
+            "Name": "linked_account_id",
+            "Type": "STRING"
+          },
+          {
+            "Name": "tags_json",
+            "Type": "STRING"
+          },
+          {
+            "Name": "product_name",
+            "Type": "STRING"
+          },
+          {
+            "Name": "charge_type",
+            "Type": "STRING"
+          },
+          {
+            "Name": "operation",
+            "Type": "STRING"
+          },
+          {
+            "Name": "region",
+            "Type": "STRING"
+          },
+          {
+            "Name": "usage_type",
+            "Type": "STRING"
+          },
+          {
+            "Name": "from_location",
+            "Type": "STRING"
+          },
+          {
+            "Name": "to_location",
+            "Type": "STRING"
+          },
+          {
+            "Name": "from_location_type",
+            "Type": "STRING"
+          },
+          {
+            "Name": "resource_id",
+            "Type": "STRING"
+          },
+          {
+            "Name": "tbs",
+            "Type": "DECIMAL",
+            "SubType": "FIXED"
+          },
+          {
+            "Name": "usage_quantity",
+            "Type": "DECIMAL",
+            "SubType": "FIXED"
+          },
+          {
+            "Name": "blended_cost",
+            "Type": "DECIMAL",
+            "SubType": "FIXED"
+          },
+          {
+            "Name": "unblended_cost",
+            "Type": "DECIMAL",
+            "SubType": "FIXED"
+          },
+          {
+            "Name": "public_cost",
+            "Type": "DECIMAL",
+            "SubType": "FIXED"
+          },
+          {
+            "Name": "blended_rate",
+            "Type": "STRING"
+          },
+          {
+            "Name": "unblended_rate",
+            "Type": "STRING"
+          },
+          {
+            "Name": "public_ondemand_rate",
+            "Type": "STRING"
+          },
+          {
+            "Name": "data_transfer_type",
+            "Type": "STRING"
+          }
+        ]
+      }
+    }
+  },
+  "LogicalTableMap": {
+    "2d4d4fbe-5008-43cb-a002-6951663be497": {
+      "Alias": "account_map",
+      "Source": {
+        "PhysicalTableId": "62e77300-66ee-4669-b257-4823ffd5678a"
+      }
+    },
+    "50f036da-ca3a-4045-a3a1-e565ff5e04cd": {
+      "Alias": "data_transfer_view",
+      "Source": {
+        "PhysicalTableId": "f578e7c1-d15d-4068-bb25-988a092a7333"
+      }
+    },
+    "51e586f9-b55e-46cd-8e90-e7c0017fdfce": {
+      "Alias": "Intermediate Table",
+      "DataTransforms": [
+        {
+          "ProjectOperation": {
+            "ProjectedColumns": [
+              "product_family",
+              "product_servicecode",
+              "product_servicename",
+              "product_code",
+              "usage_date",
+              "billing_period",
+              "payer_account_id",
+              "linked_account_id",
+              "tags_json",
+              "product_name",
+              "charge_type",
+              "operation",
+              "region",
+              "usage_type",
+              "from_location",
+              "to_location",
+              "from_location_type",
+              "resource_id",
+              "tbs",
+              "usage_quantity",
+              "blended_cost",
+              "unblended_cost",
+              "public_cost",
+              "blended_rate",
+              "unblended_rate",
+              "public_ondemand_rate",
+              "data_transfer_type",
+              "account_id",
+              "account_name"
+            ]
+          }
+        }
+      ],
+      "Source": {
+        "JoinInstruction": {
+          "LeftOperand": "50f036da-ca3a-4045-a3a1-e565ff5e04cd",
+          "RightOperand": "2d4d4fbe-5008-43cb-a002-6951663be497",
+          "Type": "LEFT",
+          "OnClause": "{linked_account_id} = {account_id}"
+        }
+      }
+    }
+  },
+  "ImportMode": "SPICE"
+}
