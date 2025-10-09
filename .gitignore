@@ -61,4 +61,5 @@ sandbox/
 *.hash
 *.zip
 .temp_dir
+.kiro
 stephens-notes.md
