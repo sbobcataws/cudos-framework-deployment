@@ -8,9 +8,7 @@ dashboards:
     category: 'Additional'
     theme: MIDNIGHT
     nonTaxonomyColumns:
-    - account_name
-    - region
-    - tags_json
+    - account_id
     file: ./DataTransfer-Cost-Analysis-Dashboard-definition.yaml
     version: v1.7.0
 datasets:
