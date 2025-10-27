@@ -10262,7 +10262,7 @@ Sheets:
     SheetTextBoxId: 57af4ba5-b374-4462-bb42-cfa7a60c45a2
   - Content: "<text-box>\n  <block align=\"center\">\n    <inline font-size=\"48px\"\
       >DataTransfer Cost Analysis Dashboard</inline>\n  </block>\n  <br/>\n  <block\
-      \ align=\"center\">\n    <inline font-size=\"48px\">V1.6.0</inline>\n  </block>\n\
+      \ align=\"center\">\n    <inline font-size=\"48px\">V1.7.0</inline>\n  </block>\n\
       \  <br/>\n  <br/>\n  <block align=\"center\">\n    <inline font-size=\"22.4px\"\
       >\n      <a href=\"https://catalog.workshops.aws/awscid/en-US/dashboards/additional/data-transfer\"\
       \ target=\"_blank\">\n        <b>Documentation</b>\n      </a>\n    </inline>\n\
@@ -10276,7 +10276,7 @@ Sheets:
       \ font-size=\"22.4px\">\n      <a href=\"mailto://cloud-intelligence-dashboards@amazon.com\"\
       \ target=\"_blank\">\n        <b>Feedback</b>\n      </a>\n    </inline>\n \
       \ </block>\n  <br/>\n  <block align=\"center\"/>\n  <br/>\n  <block align=\"\
-      right\">Built by: Chaitanya Shah</block>\n  <br/>\n  <block align=\"right\"\
+      right\">Built by: Stephen Heverin</block>\n  <br/>\n  <block align=\"right\"\
       >Powered by: Amazon QuickSight, Amazon Athena, Amazon S3</block>\n  <br/>\n\
       \  <block align=\"right\">\n    If you wish to provide feedback please or report\
       \ an error please email:\n    <a href=\"mailto://cloud-intelligence-dashboards@amazon.com\"\
